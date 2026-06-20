@@ -1,0 +1,15 @@
+export const backtestDefaults = {
+  start_date: "2024-01-01",
+  end_date: "2025-12-31",
+  initial_capital: 1000000,
+  rebalance_frequency: "monthly",
+  portfolio_size: 3,
+  weighting_method: "equal",
+  min_roe: "",
+  max_pe: "",
+  min_market_cap: "",
+  max_market_cap: "",
+  ranking_metric: "roe",
+  ranking_metrics: ["roe", "roce", "pat"],
+  ranking_ascending: false,
+};
