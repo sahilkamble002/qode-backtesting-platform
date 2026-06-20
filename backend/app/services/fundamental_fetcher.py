@@ -1,8 +1,6 @@
 from datetime import date
-
 import pandas as pd
 import yfinance as yf
-
 
 def _safe_value(frame, label, column):
     if frame is None or frame.empty or label not in frame.index or column not in frame.columns:
@@ -14,7 +12,6 @@ def _safe_value(frame, label, column):
 
     return float(value)
 
-
 def _statement_columns(*frames):
     columns = set()
     for frame in frames:
@@ -22,10 +19,8 @@ def _statement_columns(*frames):
             columns.update(frame.columns.tolist())
     return sorted(columns)
 
-
 def _to_report_date(value):
     return pd.to_datetime(value).date()
-
 
 def _compute_capital_employed(balance_sheet, column):
     total_assets = _safe_value(balance_sheet, "Total Assets", column)
@@ -40,7 +35,6 @@ def _compute_capital_employed(balance_sheet, column):
         return (total_equity or 0.0) + (total_debt or 0.0)
 
     return None
-
 
 def fetch_fundamentals(symbol):
     stock = yf.Ticker(symbol)

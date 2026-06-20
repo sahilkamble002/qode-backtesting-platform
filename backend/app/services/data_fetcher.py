@@ -1,9 +1,7 @@
 import yfinance as yf
 import pandas as pd
 from datetime import datetime
-
-
-# ~100 Indian listed companies
+# ~100 Indian companies
 
 STOCKS = [
 
@@ -110,7 +108,6 @@ STOCKS = [
     "TATAPOWER.NS",
     "UNIONBANK.NS"
 ]
-
 
 def fetch_stock_data():
 

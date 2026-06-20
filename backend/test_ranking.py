@@ -1,9 +1,6 @@
 import unittest
-
 from app.services.ranking_engine import rank_stocks
 from testing_data import sample_financial_metrics
-
-
 class RankingEngineTests(unittest.TestCase):
     def test_ranks_descending(self):
         data = sample_financial_metrics()

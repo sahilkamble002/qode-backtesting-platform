@@ -8,9 +8,7 @@ from app.models.financial_statements import (
 from app.services.data_fetcher import STOCKS
 from app.services.fundamental_fetcher import fetch_fundamentals
 
-
 db = SessionLocal()
-
 
 for symbol in STOCKS:
     try:
@@ -51,8 +49,6 @@ for symbol in STOCKS:
         print(e)
         continue
 
-
 db.commit()
 db.close()
-
 print("Fundamental data inserted successfully")

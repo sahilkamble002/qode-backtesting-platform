@@ -1,11 +1,7 @@
 import unittest
 from unittest.mock import patch
-
 import pandas as pd
-
 from app.services.data_fetcher import fetch_stock_data
-
-
 class FetchStockDataTests(unittest.TestCase):
     @patch("app.services.data_fetcher.STOCKS", ["AAA.NS", "BBB.NS"])
     @patch("app.services.data_fetcher.yf.download")

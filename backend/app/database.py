@@ -1,11 +1,7 @@
 import os
-
 from dotenv import load_dotenv
-
 from sqlalchemy import create_engine
-
 from sqlalchemy.orm import sessionmaker
-
 load_dotenv()
 
 DATABASE_URL = (
@@ -16,7 +12,6 @@ DATABASE_URL = (
     f"{os.getenv('DB_PORT')}/"
     f"{os.getenv('DB_NAME')}"
 )
-
 engine = create_engine(DATABASE_URL)
 
 SessionLocal = sessionmaker(

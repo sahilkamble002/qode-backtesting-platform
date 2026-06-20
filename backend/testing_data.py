@@ -1,6 +1,5 @@
 import pandas as pd
 
-
 def sample_financial_metrics():
     return pd.DataFrame(
         [
@@ -10,7 +9,6 @@ def sample_financial_metrics():
             {"symbol": "DDD", "report_date": pd.Timestamp("2023-12-31"), "roe": 0.27, "pe": 10.0, "market_cap": 1_200_000.0, "roce": 0.2, "pat": 110.0, "debt_to_equity": 0.3, "current_ratio": 2.0},
         ]
     )
-
 
 def historical_financial_metrics():
     return pd.DataFrame(
@@ -23,7 +21,6 @@ def historical_financial_metrics():
             {"symbol": "DDD", "report_date": pd.Timestamp("2024-01-31"), "roe": 0.26, "pe": 10.5, "market_cap": 1_180_000.0, "roce": 0.19, "pat": 108.0, "debt_to_equity": 0.31, "current_ratio": 1.95},
         ]
     )
-
 
 def sample_price_data():
     return pd.DataFrame(

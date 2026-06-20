@@ -1,6 +1,5 @@
 from datetime import date
 import json
-
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -15,7 +14,6 @@ from app.schemas.backtest import (
 from app.services.load_data import load_stock_data
 from app.services.backtest_engine import run_backtest
 from app.services.metrics_engine import build_backtest_insights, calculate_metrics
-
 
 app = FastAPI(
     title="Qode Backtesting Platform",
@@ -35,7 +33,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 @app.exception_handler(Exception)
 async def general_exception_handler(request, exc):
     return JSONResponse(
@@ -43,14 +40,12 @@ async def general_exception_handler(request, exc):
         content={"detail": f"Internal server error: {str(exc)}"},
     )
 
-
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request, exc):
     return JSONResponse(
         status_code=422,
         content={"detail": exc.errors()},
     )
-
 
 @app.get("/")
 def home():
@@ -61,13 +56,11 @@ def home():
         "backtest_post": "/backtest",
     }
 
-
 @app.get("/health")
 def health():
     return {
         "status": "ok"
     }
-
 
 def _run_backtest(request: BacktestRequest) -> BacktestResponse:
     try:
@@ -111,7 +104,6 @@ def _run_backtest(request: BacktestRequest) -> BacktestResponse:
             total_records=0,
         )
 
-    # Convert records and ensure dates are ISO format strings
     records = result.to_dict(orient="records")
     records = [
         {
@@ -170,7 +162,6 @@ def backtest_get(
     )
 
     return _run_backtest(request)
-
 
 @app.post("/backtest", response_model=BacktestResponse)
 def backtest_post(request: BacktestRequest):

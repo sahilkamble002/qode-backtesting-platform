@@ -1,10 +1,7 @@
 import unittest
 from unittest.mock import patch
-
 from app.services.strategy_engine import select_stocks
 from testing_data import historical_financial_metrics, sample_financial_metrics
-
-
 class StrategyEngineTests(unittest.TestCase):
     @patch("app.services.strategy_engine.load_financial_metrics")
     def test_selects_filtered_and_ranked_stocks(self, mock_load_financial_metrics):

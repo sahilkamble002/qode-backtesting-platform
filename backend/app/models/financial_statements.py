@@ -1,10 +1,7 @@
 from sqlalchemy import Column, Date, Float, Integer, String
-
 from app.models.models import Base
-
-
 class ProfitLossStatement(Base):
-    __tablename__ = "profit_loss_statements"
+    tablename = "profit_loss_statements"
 
     id = Column(Integer, primary_key=True, index=True)
     symbol = Column(String, index=True)
@@ -15,10 +12,8 @@ class ProfitLossStatement(Base):
     net_income = Column(Float)
     eps = Column(Float)
     last_updated = Column(Date)
-
-
 class BalanceSheetStatement(Base):
-    __tablename__ = "balance_sheet_statements"
+    tablename = "balance_sheet_statements"
 
     id = Column(Integer, primary_key=True, index=True)
     symbol = Column(String, index=True)
@@ -32,10 +27,8 @@ class BalanceSheetStatement(Base):
     total_debt = Column(Float)
     capital_employed = Column(Float)
     last_updated = Column(Date)
-
-
 class CashFlowStatement(Base):
-    __tablename__ = "cash_flow_statements"
+    tablename = "cash_flow_statements"
 
     id = Column(Integer, primary_key=True, index=True)
     symbol = Column(String, index=True)

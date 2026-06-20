@@ -1,11 +1,8 @@
 import unittest
 from unittest.mock import patch
-
 from app.services.backtest_engine import run_backtest
 from app.services.metrics_engine import build_backtest_insights, calculate_metrics
 from testing_data import sample_financial_metrics, sample_price_data
-
-
 class MetricsEngineTests(unittest.TestCase):
     @patch("app.services.backtest_engine.select_stocks")
     def test_calculates_summary_metrics(self, mock_select_stocks):
@@ -35,7 +32,6 @@ class MetricsEngineTests(unittest.TestCase):
 
         self.assertEqual(result["portfolio_entries"], 0)
         self.assertEqual(result["final_capital"], 0.0)
-
 
 if __name__ == "__main__":
     unittest.main()

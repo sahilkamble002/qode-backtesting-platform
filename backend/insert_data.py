@@ -1,18 +1,10 @@
 from app.database import SessionLocal
 from app.models.models import StockPrice
 from app.services.data_fetcher import fetch_stock_data
-
 db = SessionLocal()
-
 data = fetch_stock_data()
-
-# Clean column names
 data.columns = [col.lower() for col in data.columns]
-
-# Rename date column
 data.rename(columns={"date": "date"}, inplace=True)
-
-# Convert to datetime
 data["date"] = data["date"].dt.date
 
 for _, row in data.iterrows():
@@ -30,7 +22,5 @@ for _, row in data.iterrows():
     db.add(stock)
 
 db.commit()
-
 db.close()
-
 print("Data inserted successfully")

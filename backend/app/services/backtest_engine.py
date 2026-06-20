@@ -1,17 +1,13 @@
 import pandas as pd
-
 from app.services.strategy_engine import select_stocks
-
 from app.services.portfolio_engine import (
     equal_weight_portfolio,
     market_cap_weight_portfolio,
     metric_weight_portfolio
 )
 
-
 def _build_period_frame(period_data):
     ordered = period_data.sort_values("date")
-
     entry = (
         ordered
         .groupby("symbol", as_index=False)
@@ -50,7 +46,6 @@ def _build_period_frame(period_data):
         how="inner",
     )
 
-
 def run_backtest(
     data,
     start_date,
@@ -81,8 +76,7 @@ def run_backtest(
         (data["date"] <= end_date)
 
     ]
-
-    # Rebalancing periods
+      #rebalancing
 
     if rebalance_frequency == "monthly":
 

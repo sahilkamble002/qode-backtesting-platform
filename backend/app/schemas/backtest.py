@@ -1,13 +1,9 @@
 from datetime import date
 from typing import Literal
-
 from pydantic import BaseModel, Field, model_validator
-
 
 RebalanceFrequency = Literal["monthly", "quarterly", "yearly"]
 WeightingMethod = Literal["equal", "market_cap", "metric"]
-
-
 class BacktestRequest(BaseModel):
     start_date: date = Field(default=date(2024, 1, 1))
     end_date: date = Field(default=date(2025, 12, 31))
@@ -37,8 +33,6 @@ class BacktestRequest(BaseModel):
                     "ranking_metrics contains invalid values: " + ", ".join(invalid_metrics)
                 )
         return self
-
-
 class BacktestPosition(BaseModel):
     symbol: str
     entry_date: date
@@ -70,8 +64,6 @@ class BacktestPosition(BaseModel):
     period_start: date
     period_end: date
     rebalance_date: str
-
-
 class BacktestMetrics(BaseModel):
     portfolio_entries: int
     unique_stocks_selected: int
@@ -86,8 +78,6 @@ class BacktestMetrics(BaseModel):
     winning_periods: int
     losing_periods: int
     number_of_rebalances: int
-
-
 class RebalanceSummaryPoint(BaseModel):
     rebalance_date: str
     period_start: date
@@ -97,8 +87,6 @@ class RebalanceSummaryPoint(BaseModel):
     period_return: float
     positions: int
     drawdown: float
-
-
 class EquityCurvePoint(BaseModel):
     rebalance_date: str
     period_start: date
@@ -106,22 +94,16 @@ class EquityCurvePoint(BaseModel):
     capital_start: float
     capital_end: float
     period_return_pct: float
-
-
 class DrawdownPoint(BaseModel):
     rebalance_date: str
     period_start: date
     period_end: date
     drawdown_pct: float
-
-
 class TopMover(BaseModel):
     symbol: str
     total_profit_loss: float
     average_return_pct: float
     times_selected: int
-
-
 class BacktestResponse(BaseModel):
     parameters: BacktestRequest
     metrics: BacktestMetrics

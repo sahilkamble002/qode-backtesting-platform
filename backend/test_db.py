@@ -1,10 +1,7 @@
 import unittest
 from unittest.mock import MagicMock, patch
-
 from app.services.load_data import load_stock_data
 from testing_data import sample_price_data
-
-
 class LoadDataTests(unittest.TestCase):
     @patch("app.services.load_data.pd.read_sql")
     @patch("app.services.load_data.engine")

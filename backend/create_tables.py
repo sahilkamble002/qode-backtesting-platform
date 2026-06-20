@@ -1,4 +1,3 @@
-
 from app.database import engine
 from app.models.models import Base
 from app.models.financial_metric import FinancialMetric

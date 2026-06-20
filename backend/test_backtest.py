@@ -1,10 +1,7 @@
 import unittest
 from unittest.mock import patch
-
 from app.services.backtest_engine import run_backtest
 from testing_data import sample_financial_metrics, sample_price_data
-
-
 class BacktestEngineTests(unittest.TestCase):
     @patch("app.services.backtest_engine.select_stocks")
     def test_backtest_generates_period_returns_and_capital_progression(self, mock_select_stocks):

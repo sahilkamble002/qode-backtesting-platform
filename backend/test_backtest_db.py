@@ -1,13 +1,9 @@
 import unittest
 from unittest.mock import patch
-
 from pydantic import ValidationError
-
 from app.main import _run_backtest
 from app.schemas.backtest import BacktestRequest
 from testing_data import sample_financial_metrics, sample_price_data
-
-
 class BacktestApiTests(unittest.TestCase):
     @patch("app.main.load_stock_data")
     @patch("app.services.backtest_engine.select_stocks")

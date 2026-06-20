@@ -1,11 +1,7 @@
 import unittest
 from unittest.mock import MagicMock, patch
-
 import pandas as pd
-
 from app.services.fundamental_fetcher import fetch_fundamentals
-
-
 class FundamentalFetcherTests(unittest.TestCase):
     @patch("app.services.fundamental_fetcher.yf.Ticker")
     def test_fetch_fundamentals_maps_expected_fields(self, mock_ticker):
